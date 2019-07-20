@@ -44,19 +44,6 @@ class AppointmentsController extends Controller
     }
 
    
-
-    public function ajaxRequestPost()
-
-    {
-
-        $input = request()->all();
-        print_r($input);
-        die('form ajax');
-
-        return response()->json(['success'=>'Got Simple Ajax Request.']);
-
-    }
-
     //metodo para realizar el filtro de fechas en proceso
     public function index2()
     {
@@ -78,16 +65,23 @@ class AppointmentsController extends Controller
         $appointments_filtradas = Appointments::select("appointments.*")
         ->whereBetween('date', [$fecha_inicio, $fecha_fin])
         ->get();
-        print_r($appointments_filtradas);
+        //print_r($appointments_filtradas);
         //dd($appointments_filtradas);
-        die('dsd');
+        //die('dsd');
         if($appointments_filtradas==NULL){
             return view('appointments.index',['appointments'   =>  $appointments , 'patients'   =>  $patients,
             'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);    
         }
          else{
-            return view('appointments.index',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
-            'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);    
+            /*$returnHTML = view('appointments.index',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
+            'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia])->render();
+                    return response()->json(['success'=>$returnHTML]);
+                    return view('appointments.index',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
+            'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);*/
+
+        //return redirect('patients');
+ return view('appointments.index',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
+            'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);
         }
     }
 

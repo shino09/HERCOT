@@ -27,8 +27,12 @@ Route::resource('/appointments', 'AppointmentsController');
 Route::get('ajaxRequest', 'AppointmentsController@ajaxRequest');
 //Route::post('ajaxRequest', 'AppointmentsController@ajaxRequestPost');
 
-Route::post('ajaxRequest', 'AppointmentsController@index2');
+Route::post('index2', 'AppointmentsController@index2');
+Route::post('apponuntments/index2', 'AppointmentsController@index2');
 
+Route::post('filtro', 'AppointmentsFiltroController@index');
+
+//Route::resource('/appointmentsFiltro', 'AppointmentsFiltroController');
 
 
 /* MODULO PATIENTS*/

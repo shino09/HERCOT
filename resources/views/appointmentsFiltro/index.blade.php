@@ -4,12 +4,11 @@
         <link href="{!! asset('datatables.net-bs/css/dataTables.bootstrap.min.css') !!}" rel="stylesheet">
         <link href="{!! asset('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') !!}" rel="stylesheet">
 
-      
+        <script src="{{ asset('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
+
         <script src="{{ asset('jquery/dist/jquery.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('jquery-ui/jquery-ui.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript"></script>
-          <script src="{{ asset('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
-
         <script src="{{ asset('datatables.net/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('datatables.net-bs/js/dataTables.bootstrap.min.js') }}" type="text/javascript"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -17,6 +16,7 @@
         <!-- SE DIBUJA LA TABLA CON LOS DATOS DE LOS CITAS-->
         <div class="row">
             <div class="col-xs-12">
+                <h1>APPOINTSMENTS FILTRO</h1>
                 <div class="box box-primary col-xs-10">
                     <!-- BOTON PARA AGREGAR UN NUEVO CITA-->
                     <a href="{{ route('appointments.create') }}" class="btn  btn-success">CREAR NUEVO CITA</a>
@@ -56,9 +56,10 @@
 
             <form >
 
+
             <label class="control-label col-sm-2" for="fecha_inicio">Fecha inicio:</label>
                   <div class="col-sm-3">
-                        <input type="text" class="form-control" id="fecha_inicio" name="fecha_inicio" placeholder="fecha inicio" required="">
+                        <input type="text" class="date form-control" id="fecha_inicio" name="fecha_inicio" placeholder="fecha inicio" required="">
                       @if ($errors->has('fecha_inicio'))
                       <span class="help-block">
                         <p style="color: red; text-align: center">{{ $errors->first('fecha_inicio') }}</p>
@@ -68,7 +69,7 @@
 
                  <label class="control-label col-sm-2" for="fecha_fin">fecha fin:</label>
                   <div class="col-sm-3">
-                        <input type="text" class="form-control" id="fecha_fin"name="fecha_fin" placeholder="fecha fin" required="">
+                        <input type="text" class="date form-control" id="fecha_fin"name="fecha_fin" placeholder="fecha fin" required="">
                       @if ($errors->has('fecha_fin'))
                       <span class="help-block">
                         <p style="color: red; text-align: center">{{ $errors->first('fecha_fin') }}</p>
@@ -187,17 +188,12 @@
 
 <script>
 
- 
-
-
 $().ready(function() {
 
 $("#fecha_inicio").datepicker({
     changeMonth: true,
     changeYear: true,
-    //dateFormat: "dd-mm-yy",
-format: 'dd/mm/yy',
-
+    dateFormat: "dd-mm-yy",
     yearRange: "2010:2030",
     onSelect: function(dateText, inst) { 
     $("#fecha_inicio_value").val(dateText);
@@ -210,7 +206,7 @@ format: 'dd/mm/yy',
 $("#fecha_fin").datepicker({
     changeMonth: true,
     changeYear: true,
-format: 'dd/mm/yy',
+    dateFormat: "dd-mm-yy",
     yearRange: "2010:2030",
     onSelect: function(dateText, inst) { 
     $("#fecha_fin_value").val(dateText);
@@ -260,9 +256,6 @@ format: 'dd/mm/yy',
 
            //url:'/ajaxRequest',
            url:'index2',
-           //           url:'filtro',
-                      //url:'appointmentsFiltro',
-
 
 
            data:{fecha_inicio:fecha_inicio, fecha_fin:fecha_fin },
@@ -274,7 +267,7 @@ format: 'dd/mm/yy',
         //window.location.reload();
    //window.open(url, "_blank");
  //console.log(data);// return data php
-                               //window.location.href = "appointments/index2"; 
+                               window.location.href = "appointments/index2"; 
 
            }
 
