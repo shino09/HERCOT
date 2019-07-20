@@ -24,16 +24,10 @@ Route::resource('/appointments', 'AppointmentsController');
 
 
 
-Route::get('/appointments/index2/{fecha_inicio}/{fecha_fin}', [
-  'uses' => 'AppointmentsController@index2',
-  'as' => 'appointments.index2'
-]);
+Route::get('ajaxRequest', 'AppointmentsController@ajaxRequest');
+//Route::post('ajaxRequest', 'AppointmentsController@ajaxRequestPost');
 
-
-Route::post('/appointments/index2/{fecha_inicio}/{fecha_fin}' , [
-  'uses' => 'AppointmentController@index2',
-  'as' => 'appointments.index2'
-]);
+Route::post('ajaxRequest', 'AppointmentsController@index2');
 
 
 

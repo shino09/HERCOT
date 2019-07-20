@@ -35,13 +35,40 @@ class AppointmentsController extends Controller
             'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);    
     }
 
-    //metodo para realizar el filtro de fechas en proceso
-    public function index2($fecha_inicio, $fecha_fin)
+        public function ajaxRequest()
+
     {
-        die('llego a index2');
+
+        return view('ajaxRequest');
+
+    }
+
+   
+
+    public function ajaxRequestPost()
+
+    {
+
+        $input = request()->all();
+        print_r($input);
+        die('form ajax');
+
+        return response()->json(['success'=>'Got Simple Ajax Request.']);
+
+    }
+
+    //metodo para realizar el filtro de fechas en proceso
+    public function index2()
+    {
+        //die('llego a index2');
         //echo $fecha_inicio;
         //echo $fecha_fin;
         //die();
+        $fecha_inicio = request()->input('fecha_inicio');
+        $fecha_fin = request()->input('fecha_fin');
+        //echo $fecha_inicio;
+        //echo $fecha_fin;
+        //die('index2');
         $appointments = Appointments::all();
         $patients = Patients::all();
         $services = Services::all();
@@ -51,14 +78,15 @@ class AppointmentsController extends Controller
         $appointments_filtradas = Appointments::select("appointments.*")
         ->whereBetween('date', [$fecha_inicio, $fecha_fin])
         ->get();
+        print_r($appointments_filtradas);
         //dd($appointments_filtradas);
-        //die('dsd');
+        die('dsd');
         if($appointments_filtradas==NULL){
             return view('appointments.index',['appointments'   =>  $appointments , 'patients'   =>  $patients,
             'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);    
         }
          else{
-            return view('appointments.index2',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
+            return view('appointments.index',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
             'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);    
         }
     }
