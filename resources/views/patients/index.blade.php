@@ -15,14 +15,16 @@
             <div class="col-xs-12">
                 <div class="box box-primary col-xs-10">
                     <!-- BOTON PARA AGREGAR UN NUEVO PACIENTE-->
-                    <a href="{{ route('patients.create') }}" class="btn  btn-success">CREAR NUEVO PACIENTE</a>
-                     <a href="{{ route('appointments.index') }}" class="btn  btn-default">CITAS</a>
+                    <a href="{{ route('appointments.index') }}" class="btn  btn-default">LISTADO DE CITAS</a>
+                    <a href="{{ route('patients.index') }}" class="btn  btn-default">PACIENTES</a>
                     <a href="{{ route('dentists.index') }}" class="btn  btn-default">DENTISTAS</a>
                     <a href="{{ route('services.index') }}" class="btn  btn-default">SERVICIOS</a>
-
+                    <div>                    <a href="{{ route('patients.create') }}" class="btn  btn-success">CREAR NUEVO PACIENTE</a>
+                    </div>
                     <div class="box-header">
                         <h3 class="box-title">Lista de pacientes</h3>
                     </div>
+                    <!--MOSTAR LISTADO EN LA TABLA Y APLICARLE DATATABLES-->
                     <div class="box-body">
                         @if(count($patients)>0)
                         <table id="patients" class="table table-bordered table-hover">
@@ -30,7 +32,6 @@
                             <!-- CABEZERA DE LA TABLA-->
                             <thead>
                                 <tr>
-                                    <!--<th>Id</th>-->
                                     <th>Nombres</th>
                                     <th>Editar</th>
                                     <th>Eliminar</th>
@@ -38,17 +39,16 @@
                             </thead>
                             <tbody>
 
-                            <!-- CONTENIDO DE LA TABLA-->
+                                <!-- CONTENIDO DE LA TABLA-->
                                 @foreach($patients as $pat)
                                 <tr>
-                                    <!--<td>{{$pat->id}}</td>-->
                                     <td>{{$pat->name}}</td>
                                     
 
                                     <!-- SE LLAMA AL METOO EDIT CON LA ID DEL PACIENTE-->
                                     <td>
                                         <a href="{{ route('patients.edit',$pat->id) }}" class="btn  btn-warning glyphicon glyphicon-pencil">              
-                                    </td>
+                                        </td>
 
                                         <!-- SE LLAMA AL METODO DESTROY PARA LA ELIMINACION DEL PACIENTE-->
                                         <td>
@@ -66,9 +66,9 @@
                             <!-- SI NO HAY PACIENTES SE MUESTRA UN MENSAJE-->
                             @else
                             <br/>
-                                <div class='alert alert-warning'>
-                                    <label>No existe ningún paciente dentro de la lista</label>
-                                </div>
+                            <div class='alert alert-warning'>
+                                <label>No existe ningún paciente dentro de la lista</label>
+                            </div>
                             @endif
 
                         </div>

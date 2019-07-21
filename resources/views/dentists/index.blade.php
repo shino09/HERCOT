@@ -14,15 +14,18 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box box-primary col-xs-10">
-                    <!-- BOTON PARA AGREGAR UN NUEVO DENTISTA-->
-                    <a href="{{ route('dentists.create') }}" class="btn  btn-success">CREAR NUEVO DENTISTA</a>
-                    <a href="{{ route('appointments.index') }}" class="btn  btn-default">CITAS</a>
+                    <a href="{{ route('appointments.index') }}" class="btn  btn-default">LISTADO DE CITAS</a>
                     <a href="{{ route('patients.index') }}" class="btn  btn-default">PACIENTES</a>
+                    <a href="{{ route('dentists.index') }}" class="btn  btn-default">DENTISTAS</a>
                     <a href="{{ route('services.index') }}" class="btn  btn-default">SERVICIOS</a>
-
-                    <div class="box-header">
-                        <h3 class="box-title">Lista de DENTISTA</h3>
+                    <!-- BOTON PARA AGREGAR UN NUEVO DENTISTA-->
+                    <div>
+                        <a href="{{ route('dentists.create') }}" class="btn  btn-success">CREAR NUEVO DENTISTA</a>
                     </div>
+                    <div class="box-header">
+                        <h3 class="box-title">Lista de Dentistas</h3>
+                    </div>
+                    <!--MOSTAR LISTADO EN LA TABLA Y APLICARLE DATATABLES-->
                     <div class="box-body">
                         @if(count($dentists)>0)
                         <table id="dentists" class="table table-bordered table-hover">
@@ -30,7 +33,6 @@
                             <!-- CABEZERA DE LA TABLA-->
                             <thead>
                                 <tr>
-                                    <!--<th>Id</th>-->
                                     <th>Nombres</th>
                                     <th>Editar</th>
                                     <th>Eliminar</th>
@@ -38,17 +40,15 @@
                             </thead>
                             <tbody>
 
-                            <!-- CONTENIDO DE LA TABLA-->
+                                <!-- CONTENIDO DE LA TABLA-->
                                 @foreach($dentists as $pat)
                                 <tr>
-                                    <!--<td>{{$pat->id}}</td>-->
                                     <td>{{$pat->name}}</td>
-                                    
-
+                            
                                     <!-- SE LLAMA AL METOO EDIT CON LA ID DEL DENTISTA-->
                                     <td>
                                         <a href="{{ route('dentists.edit',$pat->id) }}" class="btn  btn-warning glyphicon glyphicon-pencil">              
-                                    </td>
+                                        </td>
 
                                         <!-- SE LLAMA AL METODO DESTROY PARA LA ELIMINACION DEL DENTISTA-->
                                         <td>
@@ -66,9 +66,9 @@
                             <!-- SI NO HAY DENTISTA SE MUESTRA UN MENSAJE-->
                             @else
                             <br/>
-                                <div class='alert alert-warning'>
-                                    <label>No existe ningún DENTISTA dentro de la lista</label>
-                                </div>
+                            <div class='alert alert-warning'>
+                                <label>No existe ningún DENTISTA dentro de la lista</label>
+                            </div>
                             @endif
 
                         </div>

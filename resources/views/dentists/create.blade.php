@@ -1,7 +1,4 @@
          <!-- JS Y CCS QUE SE USARAN , BOSTRATP, JQUERY, DATAPICKER-->
-
-
-
         <link href="{!! asset('bootstrap/dist/css/bootstrap.min.css') !!}" rel="stylesheet">
         <link href="{!! asset('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') !!}" rel="stylesheet">
 
@@ -12,13 +9,19 @@
 
 
         <div class="container center">
+           <a href="{{ route('appointments.index') }}" class="btn  btn-default">LISTADO DE CITAS</a>
+                    <a href="{{ route('patients.index') }}" class="btn  btn-default">PACIENTES</a>
+                    <a href="{{ route('dentists.index') }}" class="btn  btn-default">DENTISTAS</a>
+                    <a href="{{ route('services.index') }}" class="btn  btn-default">SERVICIOS</a>
+
           <div class="container tittle">
-              <h3>Ingresar nuevo DENTISTA</h3>
+              <h3>Ingresar nuevo Dentista</h3>
           </div>
+          <!--FORMULARIO DE CREACION DEL DENTISTA-->
           <form class="form-horizontal" method="POST" action="{{ route('dentists.store') }}">
               {{ csrf_field() }}
               <div class="form-group">
-                  <label class="control-label col-sm-2" for="name">Name:</label>
+                  <label class="control-label col-sm-2" for="name">Nombre Dentista:</label>
                   <div class="col-sm-4">
                       <input type="text" class="form-control" name="name" placeholder="Nombre del DENTISTA" >
                       @if ($errors->has('name'))

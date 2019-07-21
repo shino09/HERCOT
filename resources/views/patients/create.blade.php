@@ -1,7 +1,4 @@
         <!-- JS Y CCS QUE SE USARAN , BOSTRATP, JQUERY, DATAPICKER-->
-
-
-
         <link href="{!! asset('bootstrap/dist/css/bootstrap.min.css') !!}" rel="stylesheet">
         <link href="{!! asset('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') !!}" rel="stylesheet">
 
@@ -12,32 +9,40 @@
 
 
         <div class="container center">
-          <div class="container tittle">
-              <h3>Ingresar nuevo Paciente</h3>
-          </div>
-          <form class="form-horizontal" method="POST" action="{{ route('patients.store') }}">
-              {{ csrf_field() }}
-              <div class="form-group">
-                  <label class="control-label col-sm-2" for="name">Name:</label>
-                  <div class="col-sm-4">
-                      <input type="text" class="form-control" name="name" placeholder="Nombre del Paciente" >
-                      @if ($errors->has('name'))
-                      <span class="help-block">
-                        <p style="color: red; text-align: center">{{ $errors->first('name') }}</p>
-                    </span>
-                    @endif
-                </div>
-            </div>
+         <a href="{{ route('appointments.index') }}" class="btn  btn-default">LISTADO DE CITAS</a>
+         <a href="{{ route('patients.index') }}" class="btn  btn-default">PACIENTES</a>
+         <a href="{{ route('dentists.index') }}" class="btn  btn-default">DENTISTAS</a>
+         <a href="{{ route('services.index') }}" class="btn  btn-default">SERVICIOS</a>
 
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary" name="envio">Guardar</button>
-                  <a href="{{ route('patients.index') }}" class="btn  btn-danger">Cancelar</a>
-              </a>
+         <div class="container tittle">
+          <h3>Ingresar nuevo Paciente</h3>
+        </div>
+        
+        <!--FORMULARIO DE EDICION DEL DENTISTA-->
+
+        <form class="form-horizontal" method="POST" action="{{ route('patients.store') }}">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name:</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" name="name" placeholder="Nombre del Paciente" >
+              @if ($errors->has('name'))
+              <span class="help-block">
+                <p style="color: red; text-align: center">{{ $errors->first('name') }}</p>
+              </span>
+              @endif
+            </div>
           </div>
-      </div>
-  </form>
-</div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary" name="envio">Guardar</button>
+              <a href="{{ route('patients.index') }}" class="btn  btn-danger">Cancelar</a>
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
 
 
 
