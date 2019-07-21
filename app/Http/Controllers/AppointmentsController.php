@@ -30,8 +30,9 @@ class AppointmentsController extends Controller
         $services = Services::all();
         $dentists = Dentists::all();
         $ganancia= $appointments->sum('price') - $services->sum('price');
+        $appointments_filtradas=NULL;
 
-        return view('appointments.index',['appointments'   =>  $appointments , 'patients'   =>  $patients,
+        return view('appointments.index',['appointments'   =>  $appointments ,'appointments_filtradas'   =>  $appointments_filtradas , 'patients'   =>  $patients,
             'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);    
     }
 
@@ -61,27 +62,21 @@ class AppointmentsController extends Controller
         $services = Services::all();
         $dentists = Dentists::all();
         $ganancia= $appointments->sum('price') - $services->sum('price');
-        //echo $ganancia;
+        $appointments_filtradas =NULL;
+        if($fecha_inicio != NULL && $fecha_fin != NULL){
         $appointments_filtradas = Appointments::select("appointments.*")
         ->whereBetween('date', [$fecha_inicio, $fecha_fin])
         ->get();
+        $appointments_filtradas=Appointments::where("date",">=",$fecha_inicio)
+             ->where("date","<=",$fecha_fin)
+             ->get(); 
+        $appointments =NULL;
+        }
         //print_r($appointments_filtradas);
         //dd($appointments_filtradas);
         //die('dsd');
-        if($appointments_filtradas==NULL){
-            return view('appointments.index',['appointments'   =>  $appointments , 'patients'   =>  $patients,
-            'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);    
-        }
-         else{
-            /*$returnHTML = view('appointments.index',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
-            'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia])->render();
-                    return response()->json(['success'=>$returnHTML]);
-                    return view('appointments.index',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
-            'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);*/
-
-        //return redirect('patients');
- return view('appointments.index',['appointments'   =>  $appointments_filtradas , 'patients'   =>  $patients,
-            'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);
+        if($appointments_filtradas!=NULL && $appointments ==NULL){
+        return view('appointments.table',compact('appointments_filtradas','appointments','patients','dentists','services','ganancia'));
         }
     }
 

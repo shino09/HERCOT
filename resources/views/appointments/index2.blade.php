@@ -16,7 +16,7 @@
         <!-- SE DIBUJA LA TABLA CON LOS DATOS DE LOS CITAS-->
         <div class="row">
             <div class="col-xs-12">
-                <h1>INDEX 2 </h1>
+                <h1>APPOINTSMENTS FILTRADAS</h1>
                 <div class="box box-primary col-xs-10">
                     <!-- BOTON PARA AGREGAR UN NUEVO CITA-->
                     <a href="{{ route('appointments.create') }}" class="btn  btn-success">CREAR NUEVO CITA</a>
@@ -92,7 +92,7 @@
                         <h3 class="box-title">Lista de CITAs</h3>
                     </div>
                     <div class="box-body">
-                        @if(count($appointments)>0)
+                        @if(count($appointments_filtradas)>0)
                         <table id="appointments" class="table table-bordered table-hover">
 
                             <!-- CABEZERA DE LA TABLA-->
@@ -111,7 +111,7 @@
                             <tbody>
 
                             <!-- CONTENIDO DE LA TABLA-->
-                                @foreach($appointments as $apt)
+                                @foreach($appointments_filtradas as $apt)
                                 <tr>
                                     <!--<td>{{$apt->id}}</td>-->
                                     <td>{{$apt->date}}</td>

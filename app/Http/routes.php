@@ -28,7 +28,10 @@ Route::get('ajaxRequest', 'AppointmentsController@ajaxRequest');
 //Route::post('ajaxRequest', 'AppointmentsController@ajaxRequestPost');
 
 Route::post('index2', 'AppointmentsController@index2');
-Route::post('apponuntments/index2', 'AppointmentsController@index2');
+Route::post('apponintments/index2', 'AppointmentsController@index2');
+Route::post('apponintments/table', 'AppointmentsController@index2');
+
+Route::post('table', 'AppointmentsController@index2');
 
 Route::post('filtro', 'AppointmentsFiltroController@index');
 

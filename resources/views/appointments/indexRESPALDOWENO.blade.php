@@ -17,7 +17,8 @@
         <!-- SE DIBUJA LA TABLA CON LOS DATOS DE LOS CITAS-->
         <div class="row">
             <div class="col-xs-12">
-                   
+                    <div id='datos' name="datos" class="datos">
+                                </div>
                 <div class="box box-primary col-xs-10">
                     <!-- BOTON PARA AGREGAR UN NUEVO CITA-->
                     <a href="{{ route('appointments.create') }}" class="btn  btn-success">CREAR NUEVO CITA</a>
@@ -92,11 +93,6 @@
                         <h3 class="box-title">Lista de CITAs</h3>
                     </div>
                     <div class="box-body">
-                          <div id='confiltro' name="confiltro" class="confiltro">
-                                </div>
-
-                     <div id='sinfiltro' name="sinfiltro" class="sinfiltro">
-
                         @if(count($appointments)>0)
                         <table id="appointments" class="table table-bordered table-hover">
 
@@ -163,7 +159,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                           
+
                             <h1> GANANCIA TOTAL: <?php echo $ganancia;?>$ .
 
                             <!-- SI NO HAY CITAS SE MUESTRA UN MENSAJE-->
@@ -173,8 +169,6 @@
                                     <label>No existe ningún CITA dentro de la lista</label>
                                 </div>
                             @endif
-                                                    </div>
-
 
                         </div>
                     </div>
@@ -205,7 +199,7 @@ $("#fecha_inicio").datepicker({
     changeMonth: true,
     changeYear: true,
     //dateFormat: "dd-mm-yy",
-format: 'dd-mm-yyyy',
+format: 'dd-mm-yy',
 
     yearRange: "2010:2030",
     onSelect: function(dateText, inst) { 
@@ -219,7 +213,7 @@ format: 'dd-mm-yyyy',
 $("#fecha_fin").datepicker({
     changeMonth: true,
     changeYear: true,
-format: 'dd-mm-yyyy',
+format: 'dd-mm-yy',
     yearRange: "2010:2030",
     onSelect: function(dateText, inst) { 
     $("#fecha_fin_value").val(dateText);
@@ -290,16 +284,9 @@ format: 'dd-mm-yyyy',
 //html+="<table id='appointments' class='table table-bordered table-hover'>                             </table>";
 
                               // window.location.href = "appointments/index2"; 
-                       //       html="<h1> TEXTO JS</h1>";
- //$("#datos").html(html);
-    $('#confiltro').html(data);
-    let sinfiltro = document.querySelector('#sinfiltro');
-            sinfiltro.style.visibility = 'visible';
-                if(sinfiltro.style.visibility === 'visible'){
-                    sinfiltro.style.visibility = 'hidden';
-                }else{
-                    sinfiltro.style.visibility = 'visible';
-                }
+                              html="<h1> TEXTO JS</h1>";
+ $("#datos").html(html);
+    $('#datos').html(data);
            }
 
 
