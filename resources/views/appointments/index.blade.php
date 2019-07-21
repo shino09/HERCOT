@@ -82,7 +82,7 @@
 
             <div class="form-group">
 
-                <button class="btn btn-success btn-submit">Submit</button>
+                <button class="btn btn-success btn-submit">Filtrar entre 2 fechas</button>
 
             </div>
 
@@ -256,42 +256,24 @@ format: 'dd-mm-yyyy',
         var fecha_inicio = $("input[name=fecha_inicio]").val();
 
         var fecha_fin = $("input[name=fecha_fin]").val();
+         
 
-        //var token = { "_token": $('#token').val() };
 
-        //alert (fecha_inicio);
-        //alert (fecha_fin);
-        //alert(token);
 
-        $.ajax({
+        if (fecha_inicio == '' || fecha_fin == ''){
+            alert('por favor asegurece de ingresar  una fecha de inico y una fecha de fin');
+        }
+        else{
+             if(validate_fechaMayorQue(fecha_inicio,fecha_fin))
+        {
+             $.ajax({
 
            type:'POST',
-
-           //url:'/ajaxRequest',
            url:'index2',
-           //           url:'filtro',
-                      //url:'appointmentsFiltro',
-
-
-
            data:{fecha_inicio:fecha_inicio, fecha_fin:fecha_fin },
 
            success:function(data){
 
-              //alert(data);
-              //alert(data);
-        //window.location.reload();
-   //window.open(url, "_blank");
- //console.log(data);// return data php
-
-//var valores = eval(data);
-//alert(valores);
-//html=valores;
-//html+="<table id='appointments' class='table table-bordered table-hover'>                             </table>";
-
-                              // window.location.href = "appointments/index2"; 
-                       //       html="<h1> TEXTO JS</h1>";
- //$("#datos").html(html);
     $('#confiltro').html(data);
     let sinfiltro = document.querySelector('#sinfiltro');
             sinfiltro.style.visibility = 'visible';
@@ -305,9 +287,32 @@ format: 'dd-mm-yyyy',
 
         });
 
+}
 
-//window.location.reload();
-   //window.open(url, "_blank");
-    });
+        else{
+        alert("La fecha de fin: "+fecha_fin+" no es superior a la fecha de inicio: "+fecha_inicio);
+
+        }
+      
+}
+     });
+
+
+
+
+      function validate_fechaMayorQue(fechaInicial,fechaFinal)
+        {
+            valuesStart=fechaInicial.split("-");
+            valuesEnd=fechaFinal.split("-");
+ 
+            // Verificamos que la fecha no sea posterior a la actual
+            var dateStart=new Date(valuesStart[2],(valuesStart[1]-1),valuesStart[0]);
+            var dateEnd=new Date(valuesEnd[2],(valuesEnd[1]-1),valuesEnd[0]);
+            if(dateStart>=dateEnd)
+            {
+                return 0;
+            }
+            return 1;
+        }
 
 </script>

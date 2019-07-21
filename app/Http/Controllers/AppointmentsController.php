@@ -64,12 +64,15 @@ class AppointmentsController extends Controller
         $ganancia= $appointments->sum('price') - $services->sum('price');
         $appointments_filtradas =NULL;
         if($fecha_inicio != NULL && $fecha_fin != NULL){
-        $appointments_filtradas = Appointments::select("appointments.*")
-        ->whereBetween('date', [$fecha_inicio, $fecha_fin])
-        ->get();
+        //$appointments_filtradas = Appointments::select("appointments.*")
+        //->whereBetween('date', [$fecha_inicio, $fecha_fin])
+        //->get();
         $appointments_filtradas=Appointments::where("date",">=",$fecha_inicio)
              ->where("date","<=",$fecha_fin)
              ->get(); 
+             
+        $ganancia= $appointments_filtradas->sum('price') - $services->sum('price');
+
         $appointments =NULL;
         }
         //print_r($appointments_filtradas);
