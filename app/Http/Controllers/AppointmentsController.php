@@ -153,26 +153,26 @@ public function update(Request $request, $id)
 
         //MENSAJES DE LAS VALIDACIONES
     $messages = [
-       'date.required' => 'Debe ingresar una fecha',
-       'price.required' => 'Debe ingresar un precio',
-       'patient_id.required' => 'Debe ingresar un paciente',
-       'dentist_id.required' => 'Debe ingresar un dentista',
-       'service_id.required' => 'Debe ingresar un servicio',
-       
-   ];
+     'date.required' => 'Debe ingresar una fecha',
+     'price.required' => 'Debe ingresar un precio',
+     'patient_id.required' => 'Debe ingresar un paciente',
+     'dentist_id.required' => 'Debe ingresar un dentista',
+     'service_id.required' => 'Debe ingresar un servicio',
+     
+ ];
 
-   $this->validate($request, $rules, $messages);
+ $this->validate($request, $rules, $messages);
 
         //SE BUSCA EL CITA Y SE GURDAN LOS DTAOS RECIBIDOS
-   $appointment = Appointments::find($id);
-   $appointment->date = $request->input('date');
-   $appointment->price = $request->input('price') ;
-   $appointment->dentist_id = $request->input('dentist_id') ;
-   $appointment->patient_id = $request->input('patient_id') ;
-   $appointment->service_id = $request->input('service_id') ;
-   $appointment->save();
+ $appointment = Appointments::find($id);
+ $appointment->date = $request->input('date');
+ $appointment->price = $request->input('price') ;
+ $appointment->dentist_id = $request->input('dentist_id') ;
+ $appointment->patient_id = $request->input('patient_id') ;
+ $appointment->service_id = $request->input('service_id') ;
+ $appointment->save();
         //SE REDIRIGE AL INDEX
-   return Redirect::to('/appointments');
+ return Redirect::to('/appointments');
 }
 
 /* SE ELIMINA EL CITA CUYA ID ES RECIBIDA*/ 

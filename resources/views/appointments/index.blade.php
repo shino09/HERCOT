@@ -37,7 +37,7 @@
                             @endif
                         </div>
 
-                        <label class="control-label col-sm-2" for="fecha_fin">fecha fin:</label>
+                        <label class="control-label col-sm-2" for="fecha_fin">Fecha fin:</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="fecha_fin"name="fecha_fin" placeholder="fecha fin" required="">
                             @if ($errors->has('fecha_fin'))
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-success btn-submit">Filtrar entre 2 fechas</button>
+                            <button class="btn btn-primary btn-submit">FILTRAR FECHAS</button>
                         </div>
 
                     </form>
@@ -58,7 +58,7 @@
 
 
                     <div class="box-header">
-                        <h3 class="box-title">Lista de CITAs</h3>
+                        <h3 class="box-title">LISTADO DE  CITAS</h3>
                     </div>
                     <div class="box-body">
 
@@ -204,7 +204,7 @@
 
                 //SE VALIDA QUE LAS 2 FECHAS TRAIGAN DATOS
                 if (fecha_inicio == '' || fecha_fin == ''){
-                    alert('por favor asegurece de ingresar  una fecha de inico y una fecha de fin');
+                    alert('Por favor asegurece de ingresar  una fecha de inico y una fecha de fin');
                 }
                 //SE COMPRUEBA SI LA FECHA FINAL ES POSTERIOR A LA FECHA INICIO
                 else{
