@@ -102,7 +102,7 @@ public function store(Request $request)
 
     ];
 
-        //MENSAJES DE LAS VALIDACIONES
+    //MENSAJES DE LAS VALIDACIONES
     $messages = [
         'date.required' => 'Debe ingresar una fecha',
         'price.required' => 'Debe ingresar un precio',
