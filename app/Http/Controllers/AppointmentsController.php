@@ -33,7 +33,6 @@ class AppointmentsController extends Controller
         $ganancia= $appointments->sum('price') - $services->sum('price');
         //EN ESTE CASO NO HAY FILTROS
         $appointments_filtradas=NULL;
-
         //SE ENVIAN LOS DATOS A LA VISTA
         return view('appointments.index',['appointments'   =>  $appointments ,'appointments_filtradas'   =>  $appointments_filtradas , 'patients'   =>  $patients,
             'dentists'   =>  $dentists, 'services'   =>  $services, 'ganancia'   =>  $ganancia]);    
@@ -55,9 +54,6 @@ class AppointmentsController extends Controller
         $appointments_filtradas =NULL;
         //SI AMBAS FECHAS NO SON NULL ENTONCES SE HACE EL FILTRO
         if($fecha_inicio != NULL && $fecha_fin != NULL){
-        /*$appointments_filtradas = Appointments::select("appointments.*")
-        ->whereBetween('date', [$fecha_inicio, $fecha_fin])
-        ->get();*/
         //SE OBTIENEN SOLO LAS CITAS QUE ESTEN ENTRE FECHA INICIO Y FECHA FIN
         $appointments_filtradas=Appointments::where("date",">=",$fecha_inicio)
         ->where("date","<=",$fecha_fin)
@@ -91,7 +87,6 @@ public function create()
 /*SE VALIDAN Y SE GURDAN LOS DATOS*/
 public function store(Request $request)
 {
-
         //REGLAS DE VALIDACION DE LARAVEL
     $rules = [
         'date' => 'required',
@@ -111,7 +106,6 @@ public function store(Request $request)
         'service_id.required' => 'Debe ingresar un servicio',
 
     ];
-
     $this->validate($request, $rules, $messages);
 
         //SI LAS VALIDACIONES NO DAN ERROR SE GUARDAN LOS DATOS RECIBIDOS DEL FORMULARIO PARA CERAR
