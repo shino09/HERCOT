@@ -129,7 +129,7 @@
 <!-- SE CARGA EL  DATEPICKER PARA LAS FECHAS-->
 <script>
    $().ready(function() {
-   
+
        $("#fecha_inicio").datepicker({
            changeMonth: true,
            changeYear: true,
@@ -139,7 +139,7 @@
                $("#fecha_inicio_value").val(dateText);
            }
        });
-   
+       
        $("#fecha_fin").datepicker({
            changeMonth: true,
            changeYear: true,
@@ -149,8 +149,6 @@
                $("#fecha_fin_value").val(dateText);
            }
        });
-   
-   
    });
    
 </script>

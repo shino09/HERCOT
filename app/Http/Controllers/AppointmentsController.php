@@ -178,6 +178,5 @@ public function destroy($id)
     return Redirect::to('/appointments');
     
 }
-
 }
 
