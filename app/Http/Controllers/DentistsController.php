@@ -30,7 +30,6 @@ class DentistsController extends Controller
         return view('dentists.create');
     }
 
-
    /*SE VALIDAN Y SE GURDAN LOS DATOS*/
     public function store(Request $request)
     {

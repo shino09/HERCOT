@@ -213,7 +213,7 @@
                      $.ajax({
                         //SE ENVIARAN LOS DATOS POR POST AL CONTROLADOR
                         type:'POST',
-                        url:'index2',
+                        url:'filtrar',
                         data:{fecha_inicio:fecha_inicio, fecha_fin:fecha_fin },
 
                         success:function(data){
