@@ -10,7 +10,7 @@
                                     <th>Paciente</th> 
                                     <th>Servicio</th> 
                                     <th>Medico</th> 
-                                    <th>Precio</th> 
+                                    <th>Precio Servicio</th> 
                                     <th>Editar</th>
                                     <th>Eliminar</th>
                                 </tr>
@@ -64,13 +64,13 @@
                         <?php }?>
 
                           <!-- LA GANANCIA ES LA SUMA DE TODOS LOS PRECIOS DE LAS CITAS - LA SUMA DE LOS COSTOS DE SERVICIOS, PERO EN ESTE CASO SOLO SE APLICA A LAS CITAS FILTRADAS-->
-                        <h1> GANANCIA TOTAL: <?php echo $ganancia;?>$ .
+                        <h1> GANANCIA TOTAL POR PERIODO DE DOS FECHA: <?php echo $ganancia;?>$ .
 
                             <!-- SI NO HAY CITAS SE MUESTRA UN MENSAJE-->
                             <?php if($appointments_filtradas == NULL){?>
                                 <br/>
                                 <div class='alert alert-warning'>
-                                    <label>No existe ningún CITA dentro de la lista</label>
+                                    <label>No existe ningúna cita en el sistema</label>
                                 </div>
                             <?php }?>
 

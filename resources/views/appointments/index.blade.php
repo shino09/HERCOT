@@ -44,7 +44,7 @@
          <!-- BOTON PARA AGREGAR UN NUEVO CITA-->
          <a href="{{ route('appointments.create') }}" class="btn  btn-success">CREAR NUEVO CITA</a>
          <div class="box-header">
-            <h3 class="box-title">LISTADO DE  CITAS</h3>
+            <h3 class="box-title">HISTORIAL DE SERVICIO</h3>
          </div>
          <div class="box-body">
             <!--AQUI SE MOSTRARA LA TABLA DE DATOS CON FILTRO CUANDO SE PRESIONE EL BOTON FILTRAR-->
@@ -61,7 +61,7 @@
                         <th>Paciente</th>
                         <th>Servicio</th>
                         <th>Medico</th>
-                        <th>Precio</th>
+                        <th>Precio Servicio</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                      </tr>
@@ -105,12 +105,12 @@
                </table>
                <!-- LA GANANCIA ES LA SUMA DE TODOS LOS PRECIOS DE LAS CITAS - LA SUMA DE LOS COSTOS DE SERVICIOS-->
                <h1>
-               GANANCIA TOTAL: <?php echo $ganancia;?>$ .
+               GANANCIA TOTAL POR PERIODO: <?php echo $ganancia;?>$ .
                <!-- SI NO HAY CITAS SE MUESTRA UN MENSAJE-->
                @else
                <br/>
                <div class='alert alert-warning'>
-                  <label>No existe ningún CITA dentro de la lista</label>
+                  <label>No existe ningúna cita en el sistema</label>
                </div>
                @endif
             </div>
