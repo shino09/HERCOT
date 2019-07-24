@@ -133,7 +133,7 @@
        $("#fecha_inicio").datepicker({
            changeMonth: true,
            changeYear: true,
-           format: 'dd-mm-yyyy',
+           format: 'yyyy-mm-dd',
            yearRange: "2010:2030",
            onSelect: function(dateText, inst) { 
                $("#fecha_inicio_value").val(dateText);
@@ -143,7 +143,7 @@
        $("#fecha_fin").datepicker({
            changeMonth: true,
            changeYear: true,
-           format: 'dd-mm-yyyy',
+           format: 'yyyy-mm-dd',
            yearRange: "2010:2030",
            onSelect: function(dateText, inst) { 
                $("#fecha_fin_value").val(dateText);
