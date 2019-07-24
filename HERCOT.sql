@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-07-2019 a las 22:44:33
+-- Tiempo de generación: 24-07-2019 a las 19:55:58
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `HERCOT`
+-- Base de datos: `HERCOT4`
 --
 
 -- --------------------------------------------------------
@@ -29,25 +29,25 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appointments` (
-  `id` int(11) NOT NULL,
-  `date` varchar(45) NOT NULL,
-  `price` int(11) NOT NULL,
-  `dentist_id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL,
-  `service_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(10) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `price` int(11) DEFAULT NULL,
+  `patient_id` int(10) UNSIGNED NOT NULL,
+  `service_id` int(10) UNSIGNED NOT NULL,
+  `dentist_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `date`, `price`, `dentist_id`, `patient_id`, `service_id`, `created_at`, `updated_at`) VALUES
-(3, '16-07-2019', 222, 3, 13, 1, '2019-07-19 20:32:53', '2019-07-21 23:01:56'),
-(4, '31-07-2019', 11111111, 2, 14, 1, '2019-07-19 20:45:09', '2019-07-21 18:49:29'),
-(5, '24-07-2019', 6456, 4, 10, 3, '2019-07-20 01:02:09', '2019-07-21 23:02:14'),
-(7, '10-07-2019', 434334, 3, 15, 3, '2019-07-21 23:50:00', '2019-07-21 23:50:00');
+INSERT INTO `appointments` (`id`, `date`, `price`, `patient_id`, `service_id`, `dentist_id`, `created_at`, `updated_at`) VALUES
+(1, '2019-07-24', 333333, 1, 1, 1, '2019-07-24 21:49:50', '2019-07-24 21:49:50'),
+(2, '2019-08-10', 22222, 2, 2, 2, '2019-07-24 21:50:11', '2019-07-24 21:50:11'),
+(3, '2019-06-30', 333333, 2, 1, 1, '2019-07-24 21:50:29', '2019-07-24 21:50:29'),
+(4, '2019-07-10', 344343, 1, 2, 2, '2019-07-24 21:50:51', '2019-07-24 21:50:51');
 
 -- --------------------------------------------------------
 
@@ -56,20 +56,19 @@ INSERT INTO `appointments` (`id`, `date`, `price`, `dentist_id`, `patient_id`, `
 --
 
 CREATE TABLE `dentists` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `dentists`
 --
 
 INSERT INTO `dentists` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(2, 'rr hh de hercot', '2019-07-21 18:41:47', '2019-07-21 22:41:47'),
-(3, 'juan', '2019-07-21 19:00:49', '2019-07-21 23:00:49'),
-(4, 'pedro', '2019-07-21 23:00:41', '2019-07-21 23:00:41');
+(1, 'nick riviera', '2019-07-24 21:48:53', '2019-07-24 21:48:53'),
+(2, 'naruto uzumaki', '2019-07-24 21:49:25', '2019-07-24 21:49:25');
 
 -- --------------------------------------------------------
 
@@ -78,22 +77,19 @@ INSERT INTO `dentists` (`id`, `name`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `patients` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `patients`
 --
 
 INSERT INTO `patients` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(10, 'hola', '2019-07-19 16:53:06', '2019-07-19 16:53:06'),
-(11, 'sdsdffddf', '2019-07-19 17:23:42', '2019-07-19 17:23:42'),
-(13, 'juan perez', '2019-07-19 17:32:41', '2019-07-21 23:00:26'),
-(14, 'timoteo', '2019-07-19 17:32:50', '2019-07-19 18:37:17'),
-(15, 'mandinga', '2019-07-21 23:00:17', '2019-07-21 23:00:17');
+(1, 'nano', '2019-07-24 21:48:42', '2019-07-24 21:48:42'),
+(2, 'timoteo', '2019-07-24 21:49:15', '2019-07-24 21:49:15');
 
 -- --------------------------------------------------------
 
@@ -102,21 +98,20 @@ INSERT INTO `patients` (`id`, `name`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `services` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `price` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `price` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `services`
 --
 
 INSERT INTO `services` (`id`, `name`, `price`, `created_at`, `updated_at`) VALUES
-(1, 'dental', 3443, '2019-07-19 18:58:12', '2019-07-19 19:13:09'),
-(2, 'rayos x', 22, '2019-07-21 22:41:21', '2019-07-21 22:41:21'),
-(3, 'ortodoncia', 133322, '2019-07-21 23:01:04', '2019-07-21 23:01:10');
+(1, 'rayos x', 1111, '2019-07-24 21:49:08', '2019-07-24 21:49:08'),
+(2, 'ortodoncia', 3333, '2019-07-24 21:49:36', '2019-07-24 21:49:36');
 
 --
 -- Índices para tablas volcadas
@@ -127,9 +122,9 @@ INSERT INTO `services` (`id`, `name`, `price`, `created_at`, `updated_at`) VALUE
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `dentist_id` (`dentist_id`),
-  ADD KEY `patien_id` (`patient_id`),
-  ADD KEY `service_id` (`service_id`);
+  ADD KEY `appointments_patient_id_foreign` (`patient_id`),
+  ADD KEY `appointments_service_id_foreign` (`service_id`),
+  ADD KEY `appointments_dentist_id_foreign` (`dentist_id`);
 
 --
 -- Indices de la tabla `dentists`
@@ -157,22 +152,22 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT de la tabla `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `dentists`
 --
 ALTER TABLE `dentists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Restricciones para tablas volcadas
 --
@@ -181,9 +176,9 @@ ALTER TABLE `services`
 -- Filtros para la tabla `appointments`
 --
 ALTER TABLE `appointments`
-  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`dentist_id`) REFERENCES `dentists` (`id`),
-  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`),
-  ADD CONSTRAINT `appointments_ibfk_3` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`);
+  ADD CONSTRAINT `appointments_dentist_id_foreign` FOREIGN KEY (`dentist_id`) REFERENCES `dentists` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `appointments_patient_id_foreign` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `appointments_service_id_foreign` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
