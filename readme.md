@@ -8,12 +8,12 @@ DESCARGAR CODIGO DESDE https://github.com/shino09/HERCOT
 SE DESCARGARA CON NOMBRE HERCOT-master.ZIP 
 
 DESCOMPRIMIRLO Y PONERLO EN SU DIRECTORIO  DE SERVIDOR LOCAL
-/opt/lampp/htdocs 		EN UBUNTU  (TAMBIEN PODRIA SER  /var/www/html O EL QUE USTED QUIERA)
+/opt/lampp/htdocs 		EN UBUNTU  (TAMBIEN PODRIA SER  /var/www/html)
 C:\xampp\htdocs			EN WINDOWS 
 
 ABRIR LA CONSOLA SETEARSE EN EL DIRECTORIO DEL PROYECTO CON 
-cd /opt/lampp/htdocs/HERCOT-master		PARA UBUNTU 
-cd C:\xampp\htdocs\HERCOT-master		EN EL CASO QUE USE WINDOWS
+cd /opt/lampp/htdocs/HERCOT-master		EN UBUNTU 
+cd C:\xampp\htdocs\HERCOT-master		EN WINDOWS
 
 DARLE PERMISO DE ESCRITURA AL DIRECTORIO HERCOT SI ES NECESARIO  , (EN WINDOWS NO ES NECESARIO)
 sudo chown -R www-data.www-data /opt/lampp/htdocs/HERCOT-master  
@@ -23,7 +23,8 @@ sudo chmod -R 777 /opt/lampp/htdocs/HERCOT-master )
 EJECUTAR composer update PARA DESCARGAS LIBRERIAS FALTANTES
 
 CREAR UN ARCHIVO .ENV DENTRO DE LA CARPETA HERCOT-master CON 
-copy .env.example .env Y
+cp .env.example .env 		EN UBUTNU
+copy .env.example .env 		EN WINDOWS
 
 GENERAR LA KEY
 php artisan key:generate
