@@ -65,7 +65,7 @@ class AppointmentsController extends Controller
     }
         //SE COMPUREBA QUE HALLA CITAS FILTRADAS Y SE ENVIAN LOS DATOS A LA VISTA TABLE, LA CUAL SOLO MOSTRARA LOS DATOS DE LAS CITAS CON FILTRO DE FECHAS
     if($appointments_filtradas!=NULL && $appointments ==NULL){
-        return view('appointments.table',compact('appointments_filtradas','appointments','patients','dentists','services','ganancia'));
+        return view('appointments.table',compact('appointments_filtradas','appointments','patients','dentists','services','ganancia','fecha_inicio','fecha_fin'));
     }
 }
 

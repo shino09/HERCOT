@@ -1,6 +1,8 @@
                       <!-- SI HAY CITAS USANDO EL  FILTRO-->
                       <?php if($appointments == NULL && $appointments_filtradas != NULL){?>
-                        <h3>CON FILTRO</h3>
+                        <!--MUESTRO LAS FECHAS QUE SON FILTRADAS  -->
+                        <h3>FILTRANDO ENTRE FECHA INICIO:                               
+                        <?php echo $fecha_inicio;?> Y FECHA FIN: <?php echo $fecha_fin?>.</h3>
                         <table id="appointments_filtradas" class="table table-bordered table-hover">
 
                             <!-- CABEZERA DE LA TABLA-->

@@ -166,7 +166,6 @@
        e.preventDefault();
        var fecha_inicio = $("input[name=fecha_inicio]").val();
        var fecha_fin = $("input[name=fecha_fin]").val();
-   
        //SE VALIDA QUE LAS 2 FECHAS TRAIGAN DATOS
        if (fecha_inicio == '' || fecha_fin == ''){
            alert('Por favor asegurece de ingresar  una fecha de inico y una fecha de fin');
@@ -206,13 +205,13 @@
 <script>
    function comprobar_fechas(fecha_inicio,fecha_fin)
    {
+    
        //SE SACA CADA CARACTER DE LA FECHA (DIA.MES,AÑO) Y SE VA GUARDANDO EN UN ARREGLO
        inicio_valor=fecha_inicio.split("-");
        fin_valor=fecha_fin.split("-");
-   
        //SE CONVIERTEN LOS ARREGLOS EN TIPO DATE
-       var fecha_inicio=new Date(inicio_valor[2],(inicio_valor[1]-1),inicio_valor[0]);
-       var fecha_fin=new Date(fin_valor[2],(fin_valor[1]-1),fin_valor[0]);
+       var fecha_inicio=new Date(inicio_valor[0],(inicio_valor[1]-1),inicio_valor[2]);
+       var fecha_fin=new Date(fin_valor[0],(fin_valor[1]-1),fin_valor[2]);
        //SE COMPARAN LAS DOS FECHAS, SI FECHA FIN ES POSTERIOR A FECHA INICIO SE RETORNA UN 1
        if(fecha_inicio>=fecha_fin)
        {
